@@ -52,7 +52,6 @@ class OnSelectOrder(Resource):
                 "on_issue_status": payload[constant.CONTEXT]["message_id"]
             }
         }
-        print("message----------", message)
         send_message_to_queue_for_given_request(message)
         validate(resp, response_schema)
         return resp

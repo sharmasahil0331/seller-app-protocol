@@ -21,8 +21,8 @@ class Issue(Resource):
 
     # @expects_json(path_schema)
     def post(self):
-        response_schema = get_json_schema_for_response(
-            '/issue', domain="logistics")
+        # response_schema = get_json_schema_for_response(
+        #     '/issue', domain="logistics")
         resp = get_ack_response(ack=True)
         payload = request.get_json()
         dump_request_payload(payload, domain=OndcDomain.LOGISTICS.value)
@@ -33,7 +33,7 @@ class Issue(Resource):
             }
         }
         send_message_to_queue_for_given_request(message)
-        validate(resp, response_schema)
+        # validate(resp, response_schema)
         return resp
 
 
@@ -44,8 +44,8 @@ class OnInit(Resource):
 
     # @expects_json(path_schema)
     def post(self):
-        response_schema = get_json_schema_for_response(
-            '/on_issue', domain="logistics")
+        # response_schema = get_json_schema_for_response(
+        #     '/on_issue', domain="logistics")
         resp = get_ack_response(ack=True)
         payload = request.get_json()
         dump_request_payload(payload, domain=OndcDomain.LOGISTICS.value)
@@ -56,5 +56,5 @@ class OnInit(Resource):
             }
         }
         send_message_to_queue_for_given_request(message)
-        validate(resp, response_schema)
+        # validate(resp, response_schema)
         return resp
